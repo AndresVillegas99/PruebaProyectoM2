@@ -12,7 +12,7 @@ namespace Proyecto_Cine_metodologia
     {
         public static void Main(string[] args)
         {
-          //  CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(
+          /*  CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(
             //    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
             CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse("the-value-of-your-storage-connectionstring");
@@ -27,8 +27,8 @@ namespace Proyecto_Cine_metodologia
             CloudQueueMessage mensaje = new CloudQueueMessage("su asiento es el #####");
 
             cola.AddMessageAsync(mensaje);
-            Console.ReadLine();
-            // CreateHostBuilder(args).Build().Run();
+            Console.ReadLine();*/
+             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
