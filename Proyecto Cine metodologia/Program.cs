@@ -18,8 +18,11 @@ namespace Proyecto_Cine_metodologia
     {
         public static void Main(string[] args)
         {
-            CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+          //  CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(
+            //    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse("the-value-of-your-storage-connectionstring");
+            
 
             CloudQueueClient ClienteCola = cuentaAlmacenamiento.CreateCloudQueueClient();
 
