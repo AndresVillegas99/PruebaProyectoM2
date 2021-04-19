@@ -4,19 +4,61 @@
     ViewData["Title"] = "PaginaCompras";
 }
 
-<h1>PaginaCompras</h1>
+<nav>
+    <hr />
+</nav>
+<section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <!-- Peliculas-->
+    <div class="row justify-content-center">
+        <!-- Pelicula 1-->
+        <div class="col-md-6 col-lg-4 mb-5">
+            <div class="img-item mx-auto" data-toggle="modal">
+                <div class="img-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="img-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    <div class="row justify-content-center">
+                        <img class="img-fluid" src="~/lib/img/img1.jpg" /> <br /> <button type="button" class="btn btn-secondary">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pelicula 2-->
+        <div class="col-md-6 col-lg-4 mb-5">
+            <div class="img-item mx-auto" data-toggle="modal">
+                <div class="img-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="img-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    <div class="row justify-content-center">
+                        <img class="img-fluid" src="~/lib/img/img2.jpg" /> <br /> <button type="button" class="btn btn-secondary">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pelicula 3-->
+        <div class="col-md-6 col-lg-4 mb-5">
+            <div class="img-item mx-auto" data-toggle="modal">
+                <div class="img-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="img-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    <div class="row justify-content-center">
+                        <img class="img-fluid" src="~/lib/img/img3.jpg" /> <br /> <button type="button" class="btn btn-secondary">Reservar</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+ 
+</section>
+
+
+
+<!-- <table class="table">
     <thead>
         <tr>
             <th></th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
+
     {
         <tr>
             <td>
