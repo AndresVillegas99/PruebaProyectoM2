@@ -13,23 +13,36 @@ namespace Funcion_HTTP
     {
         [FunctionName("Function1")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+            [Queue ("compras")] IAsyncCollector<pedidoCompra> colaCompras,
             ILogger log)
+        
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("Se ha recibido un pedido de compra");
 
-            string name = req.Query["name"];
+            
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            var orden = JsonConvert.DeserializeObject<pedidoCompra>(requestBody);
+            await colaCompras.AddAsync(orden);
+            log.LogInformation($"Pedido {orden.OrderID} recibido, precio seria {orden.Precio} " +
+                $"para la pelicula {orden.PeliculaID}");
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            string responseMessage = 
+                 "Gracias por su compra"
+                ;
 
             return new OkObjectResult(responseMessage);
         }
+    }
+
+    public class pedidoCompra
+    {
+        public string OrderID { get; set; }
+
+        public string Precio { get; set; }
+
+        public string PeliculaID { get; set; }
     }
 }
 
