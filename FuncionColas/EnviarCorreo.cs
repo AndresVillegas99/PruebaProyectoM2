@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PruebaCorreo;
+using System.Linq;
 
+
+using System.Threading.Tasks;
 namespace FuncionColas
 {
     class EnviarCorreo
     {
-        Correo correo = new Correo();
-        string body = @"<p>Información de su compra</p>
+        public void Enviar()
+        {
+            Correo correo = new Correo();
+
+            string body = @"<p>Información de su compra</p>
             <table border=""1"">
             <tr>
 	            <td>Factura</td>
@@ -30,6 +37,8 @@ namespace FuncionColas
             </tbody>
             </table>
             <p>Gracias por escogernos.</p>";
-        correo.sendMail("yoel.urena@ulatina.net", "Compra de tiquete", body);
+
+            correo.sendMail("yoel.urena@ulatina.net", "Compra de tiquete", body);
+        }
     }
 }
