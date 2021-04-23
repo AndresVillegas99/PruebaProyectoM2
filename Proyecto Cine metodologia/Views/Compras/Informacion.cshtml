@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Proyecto_Cine_metodologia.Program>
+@using Funcion_HTTP
+@{
+    ViewData["Title"] = "PaginaCompras";
+}
+
+<nav>
+    <hr />
+</nav>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style >
+<body>
+    <form method="post">
+        <div><b>Porfavor Introducir su nombre y correo para recibir su factura</b></div>
+        Pelicula
+        <input type="text" name="pelicula" readonly />
+        Nombre del cliente
+        <input type="text" name="cnombre" />
+        Asiento
+        <input type="text" name="nasiento" readonly />
+
+        Fecha
+        <input type="text" name="fecha" readonly />
+        Sala
+        <input type="text" name="nsala" readonly />
+        Precio
+        <input type="text" name="precio" readonly />
+        Correo
+        <input type="text" name="correo" />
+    </form>
+    
+    <button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>
+</body>

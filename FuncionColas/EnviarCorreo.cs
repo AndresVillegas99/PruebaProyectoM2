@@ -10,7 +10,7 @@ namespace FuncionColas
 {
     class EnviarCorreo
     {
-        public void Enviar()
+        public static void Enviar()
         {
             Correo correo = new Correo();
 
@@ -38,7 +38,7 @@ namespace FuncionColas
             </table>
             <p>Gracias por escogernos.</p>";
 
-            correo.sendMail("yoel.urena@ulatina.net", "Compra de tiquete", body);
+            correo.sendMail("andres.villegas@ulatina.net", "Compra de tiquete", body);
         }
     }
 }

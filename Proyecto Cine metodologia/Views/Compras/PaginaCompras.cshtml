@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Proyecto_Cine_metodologia.Program>
-
+@using Funcion_HTTP
 @{
     ViewData["Title"] = "PaginaCompras";
 }
-
+ 
 <nav>
     <hr />
 </nav>
@@ -39,34 +39,34 @@
                 <div class="img-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="img-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     <div class="row justify-content-center">
-                        <img class="img-fluid" src="~/lib/img/img3.jpg" /> <br /> <button type="button" class="btn btn-secondary">Reservar</button>
+                        <img class="img-fluid" src="~/lib/img/img3.jpg" /> <br /> <a id="Reserva3" class="nav-link py-3 px-0 px-lg-3" asp-area="" asp-controller="Compras" asp-action="Informacion"> Reserva</a>
+                        </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
-    </div>
-
- 
-</section>
 
 
+    </section>
 
-<!-- <table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
 
-    {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

@@ -9,9 +9,10 @@ using Newtonsoft.Json;
 
 namespace Funcion_HTTP
 {
-    public static class Function1
+    public  class FuncionHTTP
     {
-        [FunctionName("Function1")]
+        
+        [FunctionName("FuncionHTTPMessage")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
             [Queue ("compras")] IAsyncCollector<pedidoCompra> colaCompras,
@@ -44,5 +45,11 @@ namespace Funcion_HTTP
 
         public string PeliculaID { get; set; }
     }
+
+    /*
+     * -Uri  http://localhost:7071/api/FuncionHTTPMessage `
+>> -Body '{ "OrderID" : "1", "Precio" : "23", "PeliculaID" : "32" }' `
+>> -Headers @{ "Content-Type" = "application/json"}
+    */
 }
 
