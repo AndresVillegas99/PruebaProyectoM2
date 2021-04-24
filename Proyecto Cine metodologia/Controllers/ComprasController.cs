@@ -30,6 +30,20 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             return View();
         }
+        // POST: ComprasController/Informacion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Informacion(Models.Captura capturas)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         public ActionResult Create()
         {
             return View();
@@ -49,6 +63,7 @@ namespace Proyecto_Cine_metodologia.Controllers
                 return View();
             }
         }
+
 
         // GET: ComprasController/Edit/5
         public ActionResult Edit(int id)

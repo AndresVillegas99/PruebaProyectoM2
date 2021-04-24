@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Proyecto_Cine_metodologia.Program>
+﻿@model Proyecto_Cine_metodologia.Models.Captura
 @using Funcion_HTTP
 @{
     ViewData["Title"] = "PaginaCompras";
@@ -24,7 +24,9 @@
         Pelicula
         <input type="text" name="pelicula" readonly />
         Nombre del cliente
-        <input type="text" name="cnombre" />
+        <input asp-for="Nombre" class="form-control" />
+
+        <label asp-for="Nombre" class="form-control" />
         Asiento
         <input type="text" name="nasiento" readonly />
 
@@ -35,8 +37,20 @@
         Precio
         <input type="text" name="precio" readonly />
         Correo
-        <input type="text" name="correo" />
+        @*<input type="text" name="correo" />*@
+
+        <label asp-for="Email" class="form-control" />
+
+        <input asp-for="Email" class="form-control" />
+
+
+
+        <button type="submit" value="Create" class="btn btn-secondary" />
     </form>
     
-    <button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>
+    @*<button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>*@
+    
+
+    @*<input type="submit" value="Create" class="btn btn-primary">*@
+
 </body>

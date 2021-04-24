@@ -30,8 +30,8 @@ namespace FuncionColas
             <td>Yoel</td>
             <td>12-12-2021</td>
             <td>Prueba</td>
-                <td>2</td>
-                <td>F2</td>
+            <td>2</td>
+            <td>F2</td>
                 <td>2.000</td>
             </tr>
             </tbody>
