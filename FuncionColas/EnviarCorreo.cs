@@ -38,7 +38,7 @@ namespace FuncionColas
             </table>
             <p>Gracias por escogernos.</p>";
 
-            correo.sendMail("andres.villegas@ulatina.net", "Compra de tiquete", body);
+            correo.sendMail("villegasa25@gmail.com", "Compra de tiquete", body);
         }
     }
 }

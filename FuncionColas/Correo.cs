@@ -13,7 +13,7 @@ namespace PruebaCorreo
         public string sendMail(string to, string asunto, string body)
         {
             string msge = "";
-            string from = "yoel.urena@ulatina.net";
+            string from = "pmcine@outlook.com";
             string displayName = "Cine de Proyecto";
             try
             {
@@ -27,7 +27,7 @@ namespace PruebaCorreo
 
 
                 SmtpClient client = new SmtpClient("smtp.office365.com", 587);
-                client.Credentials = new NetworkCredential(from, " "/*AQui va la contraseña el correo*/);
+                client.Credentials = new NetworkCredential(from, " ProyectoMCine1");
                 client.EnableSsl = true;
                 client.Send(mail);
 

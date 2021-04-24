@@ -48,8 +48,8 @@ namespace Funcion_HTTP
 
     /*
      * -Uri  http://localhost:7071/api/FuncionHTTPMessage `
->> -Body '{ "OrderID" : "1", "Precio" : "23", "PeliculaID" : "32" }' `
->> -Headers @{ "Content-Type" = "application/json"}
+-Body '{ "OrderID" : "1", "Precio" : "23", "PeliculaID" : "32" }' `
+ -Headers @{ "Content-Type" = "application/json"}
     */
 }
 
