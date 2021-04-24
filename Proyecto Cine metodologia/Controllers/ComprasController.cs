@@ -25,6 +25,11 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             return View();
         }
+
+        public IActionResult Informacion()
+        {
+            return View();
+        }
         public ActionResult Create()
         {
             return View();
