@@ -38,10 +38,10 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             try
             {
-              
-
-
-                return RedirectToAction(nameof(Index));
+                EnviarCorreo correo = new EnviarCorreo();
+                correo.Enviar("12", capturas.Nombre, capturas.Fecha, capturas.Pelicula, capturas.Sala,
+                    capturas.Asiento, capturas.Precio, capturas.Email);
+                return RedirectToAction(nameof(PaginaCompras));
             }
             catch
             {
