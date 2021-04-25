@@ -24,23 +24,22 @@
         border-radius: 4px;
     }
 
-    <style >
-    footer {
-        clear: both;
-        position: relative;
-        height: 200px;
-        margin-top: -200px;
-        color: red
-    }
-
-    page-container {
-        position: absolute;
-        min-height: 100vh;
-    }
+    
 
     content-wrap {
         padding-bottom: 2.5rem; /* Footer height */
     }
+    footer {
+        position: relative;
+        left: 0px;
+        padding-top: 2%;
+        bottom: 0px;
+        height: 10%;
+        width: 100%;
+        color: red;
+        background-color: #1abc9c ;
+    }
+
 
 </style >
 <body>
@@ -63,30 +62,24 @@
         <input type="text" name="nsala" readonly />
         Precio
         <input type="text" name="precio" readonly />
-        
+
         @*<input type="text" name="correo" />*@
 
-    <label>  Correo</label>
+        <label>  Correo</label>
 
         <input name="texto" asp-for="Email" class="form-control" />
 
 
 
-        <button type="submit" value="Create" class="btn btn-secondary" > @*nombre aqui *@ </button>
+        <button type="submit" value="Create" class="btn btn-secondary"> @*nombre aqui *@ </button>
     </form>
-    
+
     @*<button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>*@
-    
+
 
     @*<input type="submit" value="Create" class="btn btn-primary">*@
 
+    
+
 </body>
-<footer class="footer text-center">
-    <div id="page-container" class="container">
-        <div id="content-wrap">
 
-            &copy; 2021 - Protecto Metodología 2 - <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy</a>
-        </div>
-
-    </div>
-</footer>

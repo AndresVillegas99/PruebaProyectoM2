@@ -8,8 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace FuncionColas
 {
-    class EnviarCorreo
+    public class EnviarCorreo
     {
+        public EnviarCorreo()
+        {
+
+        }
         public static void Enviar()
         {
             Correo correo = new Correo();

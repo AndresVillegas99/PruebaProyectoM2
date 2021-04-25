@@ -8,7 +8,7 @@ using System.Net;
 
 namespace PruebaCorreo
 {
-    class Correo
+    public class Correo
     {
         public string sendMail(string to, string asunto, string body)
         {

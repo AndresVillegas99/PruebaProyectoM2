@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FuncionColas;
 
 namespace Proyecto_Cine_metodologia.Controllers
 {
@@ -37,6 +38,7 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             try
             {
+                FuncionColas.EnviarCorreo a = new FuncionColas.EnviarCorreo();
                 return RedirectToAction(nameof(Index));
             }
             catch
