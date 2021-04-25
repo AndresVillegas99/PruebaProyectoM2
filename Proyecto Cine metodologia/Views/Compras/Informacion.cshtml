@@ -17,16 +17,43 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
+
+    label {
+        display: inline-block;
+        color: aquamarine;
+        border-radius: 4px;
+    }
+
+    <style >
+    footer {
+        clear: both;
+        position: relative;
+        height: 200px;
+        margin-top: -200px;
+        color: red
+    }
+
+    page-container {
+        position: absolute;
+        min-height: 100vh;
+    }
+
+    content-wrap {
+        padding-bottom: 2.5rem; /* Footer height */
+    }
+
 </style >
 <body>
     <form method="post">
         <div><b>Porfavor Introducir su nombre y correo para recibir su factura</b></div>
         Pelicula
         <input type="text" name="pelicula" readonly />
-        Nombre del cliente
+
+        <label> Nombre</label>
+
         <input asp-for="Nombre" class="form-control" />
 
-        <label asp-for="Nombre" class="form-control" />
+
         Asiento
         <input type="text" name="nasiento" readonly />
 
@@ -36,16 +63,16 @@
         <input type="text" name="nsala" readonly />
         Precio
         <input type="text" name="precio" readonly />
-        Correo
+        
         @*<input type="text" name="correo" />*@
 
-        <label asp-for="Email" class="form-control" />
+    <label>  Correo</label>
 
-        <input asp-for="Email" class="form-control" />
+        <input name="texto" asp-for="Email" class="form-control" />
 
 
 
-        <button type="submit" value="Create" class="btn btn-secondary" />
+        <button type="submit" value="Create" class="btn btn-secondary" > @*nombre aqui *@ </button>
     </form>
     
     @*<button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>*@
@@ -54,3 +81,12 @@
     @*<input type="submit" value="Create" class="btn btn-primary">*@
 
 </body>
+<footer class="footer text-center">
+    <div id="page-container" class="container">
+        <div id="content-wrap">
+
+            &copy; 2021 - Protecto Metodología 2 - <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy</a>
+        </div>
+
+    </div>
+</footer>
