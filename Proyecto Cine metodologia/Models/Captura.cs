@@ -11,6 +11,8 @@ namespace Proyecto_Cine_metodologia.Models
 
         public string Sala { get; set; }
 
+        public  string Fecha { get; set; }
+
         public string Asiento { get; set; }
 
         public string Precio { get; set; }

@@ -20,8 +20,9 @@
 
     label {
         display: inline-block;
-        color: aquamarine;
+        color: black;
         border-radius: 4px;
+        font: bolder;
     }
 
     
@@ -33,10 +34,11 @@
         position: relative;
         left: 0px;
         padding-top: 2%;
+        padding-bottom: 2%;
         bottom: 0px;
         height: 10%;
         width: 100%;
-        color: red;
+        color: gold;
         background-color: #1abc9c ;
     }
 
@@ -44,24 +46,24 @@
 </style >
 <body>
     <form method="post">
-        <div><b>Porfavor Introducir su nombre y correo para recibir su factura</b></div>
-        Pelicula
-        <input type="text" name="pelicula" readonly />
+        <div><b>Por favor Introducir su nombre y correo para recibir su factura</b></div>
+        <label> Pelicula</label>
+        <input asp-for="Pelicula" class="form-control" readonly />
 
         <label> Nombre</label>
 
         <input asp-for="Nombre" class="form-control" />
 
 
-        Asiento
-        <input type="text" name="nasiento" readonly />
+        <label>Asiento</label>
+        <input asp-for="Asiento" class="form-control" readonly /> 
 
-        Fecha
-        <input type="text" name="fecha" readonly />
-        Sala
-        <input type="text" name="nsala" readonly />
-        Precio
-        <input type="text" name="precio" readonly />
+        <label>Fecha</label>
+        <input asp-for="Fecha" class="form-control" readonly /> 
+        <label>Sala</label>
+        <input asp-for="Sala" class="form-control" readonly /> 
+        <label>Precio</label>
+        <input asp-for="Precio" class="form-control"  readonly /> 
 
         @*<input type="text" name="correo" />*@
 
@@ -71,7 +73,7 @@
 
 
 
-        <button type="submit" value="Create" class="btn btn-secondary"> @*nombre aqui *@ </button>
+        <button type="submit" value="Create" class="btn btn-secondary"> Enviar Factura </button>
     </form>
 
     @*<button type="button" class="btn btn-secondary" onclick="">Enviar factura</input>*@

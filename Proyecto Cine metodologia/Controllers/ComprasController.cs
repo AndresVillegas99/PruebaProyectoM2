@@ -38,7 +38,9 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             try
             {
-                FuncionColas.EnviarCorreo a = new FuncionColas.EnviarCorreo();
+              
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
