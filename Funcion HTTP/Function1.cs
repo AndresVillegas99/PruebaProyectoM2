@@ -41,9 +41,9 @@ namespace Funcion_HTTP
 
                 return new OkObjectResult(responseMessage);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                object a = 1;
+                string a = e.ToString();
                 throw;
             }
 
