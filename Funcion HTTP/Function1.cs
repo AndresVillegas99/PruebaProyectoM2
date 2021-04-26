@@ -1,43 +1,77 @@
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using FuncionColas;
+using System;
 
 namespace Funcion_HTTP
 {
-    public static class Function1
+    public class FuncionHTTP
     {
-        [FunctionName("Function1")]
-        [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
-        [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
-        [OpenApiParameter(name: "name", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Name** parameter")]
-        [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
+
+        [FunctionName("FuncionHTTPMessage")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "localhost:44379/Compras/PaginaGracias")] HttpRequest req,
+            [Queue("compras")] IAsyncCollector<pedidoCompra> colaCompras,
             ILogger log)
         {
-            log.LogInformation("Cambio");
 
-            string name = req.Query["name"];
+            try
+            {
+                log.LogInformation("Se ha recibido un pedido de compra");
+                //EnviarCorreo correo = new EnviarCorreo();
+                //correo.Enviar("12", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "villegasa25@gmail.com");
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+                string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                var orden = JsonConvert.DeserializeObject<pedidoCompra>(requestBody);
+                await colaCompras.AddAsync(orden);
+                log.LogInformation($"Pedido {orden.OrderID} recibido, precio seria {orden.Precio} " +
+                    $"para la pelicula {orden.PeliculaID} en la sala {orden.Sala} en el asiento {orden.Asiento}." +
+                    $" Se enviara al correo {orden.Email}");
 
-            return new OkObjectResult(responseMessage);
-        }
+                string responseMessage =
+                     "Gracias por su compra"
+                    ;
+
+                return new OkObjectResult(responseMessage);
+            }
+            catch (Exception e)
+            {
+                string a = e.ToString();
+                throw;
+            }
+
+        
     }
+    }
+
+    public class pedidoCompra
+    {
+        public string OrderID { get; set; }
+
+        public string Precio { get; set; }
+
+        public string PeliculaID { get; set; }
+        public string Email { get; set; }
+
+
+
+        public string Sala { get; set; }
+
+        public string Asiento { get; set; }
+
+    }
+
+    /*
+     * -Uri  http://localhost:7071/api/FuncionHTTPMessage `
+-Body '{ "OrderID" : "1", "Precio" : "23", "PeliculaID" : "32" }' `
+ -Headers @{ "Content-Type" = "application/json"}
+    */
 }
 
