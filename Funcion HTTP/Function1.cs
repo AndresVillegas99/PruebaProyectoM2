@@ -6,35 +6,49 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using FuncionColas;
+using System;
 
 namespace Funcion_HTTP
 {
-    public  class FuncionHTTP
+    public class FuncionHTTP
     {
-        
+
         [FunctionName("FuncionHTTPMessage")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-            [Queue ("compras")] IAsyncCollector<pedidoCompra> colaCompras,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "localhost:44379/Compras/PaginaGracias")] HttpRequest req,
+            [Queue("compras")] IAsyncCollector<pedidoCompra> colaCompras,
             ILogger log)
-        
         {
-            log.LogInformation("Se ha recibido un pedido de compra");
 
-            
+            try
+            {
+                log.LogInformation("Se ha recibido un pedido de compra");
+                //EnviarCorreo correo = new EnviarCorreo();
+                //correo.Enviar("12", "prueba", "prueba", "prueba", "prueba", "prueba", "prueba", "villegasa25@gmail.com");
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var orden = JsonConvert.DeserializeObject<pedidoCompra>(requestBody);
-            await colaCompras.AddAsync(orden);
-            log.LogInformation($"Pedido {orden.OrderID} recibido, precio seria {orden.Precio} " +
-                $"para la pelicula {orden.PeliculaID}");
 
-            string responseMessage = 
-                 "Gracias por su compra"
-                ;
+                string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                var orden = JsonConvert.DeserializeObject<pedidoCompra>(requestBody);
+                await colaCompras.AddAsync(orden);
+                log.LogInformation($"Pedido {orden.OrderID} recibido, precio seria {orden.Precio} " +
+                    $"para la pelicula {orden.PeliculaID} en la sala {orden.Sala} en el asiento {orden.Asiento}." +
+                    $" Se enviara al correo {orden.Email}");
 
-            return new OkObjectResult(responseMessage);
-        }
+                string responseMessage =
+                     "Gracias por su compra"
+                    ;
+
+                return new OkObjectResult(responseMessage);
+            }
+            catch (Exception)
+            {
+                object a = 1;
+                throw;
+            }
+
+        
+    }
     }
 
     public class pedidoCompra
@@ -44,6 +58,14 @@ namespace Funcion_HTTP
         public string Precio { get; set; }
 
         public string PeliculaID { get; set; }
+        public string Email { get; set; }
+
+
+
+        public string Sala { get; set; }
+
+        public string Asiento { get; set; }
+
     }
 
     /*

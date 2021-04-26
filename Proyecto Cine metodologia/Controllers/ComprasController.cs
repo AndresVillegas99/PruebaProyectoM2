@@ -26,6 +26,10 @@ namespace Proyecto_Cine_metodologia.Controllers
         {
             return View();
         }
+        public IActionResult PaginaGracias()
+        {
+            return View();
+        }
 
         public IActionResult Informacion()
         {
@@ -41,7 +45,7 @@ namespace Proyecto_Cine_metodologia.Controllers
                 EnviarCorreo correo = new EnviarCorreo();
                 correo.Enviar("12", capturas.Nombre, capturas.Fecha, capturas.Pelicula, capturas.Sala,
                     capturas.Asiento, capturas.Precio, capturas.Email);
-                return RedirectToAction(nameof(PaginaCompras));
+                return RedirectToAction(nameof(PaginaGracias));
             }
             catch
             {
