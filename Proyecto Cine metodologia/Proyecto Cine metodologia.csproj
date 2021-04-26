@@ -5,4 +5,8 @@
     <RootNamespace>Proyecto_Cine_metodologia</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Compras\" />
+  </ItemGroup>
+
 </Project>
